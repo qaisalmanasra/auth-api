@@ -17,7 +17,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
     it('POST /api/v1/:model adds an item to the DB and returns an object with the added item', async () => {
         const res = await mockRequest.post('/api/v1/food').send({
             name: "strawberry",
-            calories: "50",
+            price: "50",
             type: "fruit"
         });
         let resObj = JSON.parse(res.text);
@@ -29,7 +29,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
         expect(resObj).toMatchObject({
                 id: expect.any(Number),
                 name: expect.any(String),
-                calories: '50',
+                price: '50',
                 type: expect.any(String),
                 updatedAt: expect.any(String),
                 createdAt: expect.any(String)
@@ -44,7 +44,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
         expect(resObj).toStrictEqual([{
             id: expect.any(Number),
             name: expect.any(String),
-            calories: expect.any(Number),
+            price: expect.any(String),
             type: expect.any(String),
             updatedAt: expect.any(String),
             createdAt: expect.any(String)
@@ -59,7 +59,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
         expect(resObj).toStrictEqual({
             id: expect.any(Number),
             name: expect.any(String),
-            calories: expect.any(Number),
+            price: expect.any(String),
             type: expect.any(String),
             updatedAt: expect.any(String),
             createdAt: expect.any(String)
@@ -69,7 +69,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
     it('PUT /api/v1/:model/ID returns a single, updated item by ID', async () => {
         const res = await mockRequest.put('/api/v1/food/1').send({
             name: "orange",
-            calories: "20",
+            price: "20",
             type: "fruit"
         })
         let resObj = JSON.parse(res.text);
@@ -78,7 +78,7 @@ describe('Testing for V1 (Unauthenticated API) Routes', () => {
         expect(resObj).toStrictEqual({
             id: 1,
             name: "orange",
-            calories: "20",
+            price: "20",
             type: "fruit",
             updatedAt: expect.any(String),
             createdAt: expect.any(String)

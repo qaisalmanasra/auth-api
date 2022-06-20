@@ -26,16 +26,16 @@ let sequelizeOptions =
 
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
-const orderTable = foodModel(sequelize, DataTypes);
-const booksTable = clothesModel(sequelize, DataTypes);
+const foodTable = foodModel(sequelize, DataTypes);
+const clothesTable = clothesModel(sequelize, DataTypes);
 const userTable = userModel(sequelize, DataTypes);
 
-const orderCollection = new Collection(orderTable);
-const booksCollection = new Collection(booksTable);
+const foodCollection = new Collection(foodTable);
+const clothesCollection = new Collection(clothesTable);
 
 module.exports = {
     db: sequelize,
-    book:booksCollection,
-    order:orderCollection,
+    clothes:clothesCollection,
+    food:foodCollection,
     users:userTable,
 }
